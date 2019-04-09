@@ -26,32 +26,11 @@ class AdminMenuEvent
 
 
     /**
-     * DomainsItemAdminPrepare constructor.
-     * @param array $data
      * @param array $result
      */
-    public function __construct(array &$data, array &$result)
+    public function __construct(array &$result)
     {
-        $this->data = &$data;
-        $this->item = &$item;
         $this->result = &$result;
-    }
-
-
-    /**
-     * @return array
-     */
-    public function getData(): array
-    {
-        return $this->data;
-    }
-
-    /**
-     * @param $data
-     */
-    public function setData(array $data): void
-    {
-        $this->data = $data;
     }
 
     /**
