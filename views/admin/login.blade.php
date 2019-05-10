@@ -1,7 +1,7 @@
 <?php
 
 ?>
-@extends('core::layouts.admin.default')
+@extends('admin::layouts.admin.default')
 
 @section('title')
     Авторизация

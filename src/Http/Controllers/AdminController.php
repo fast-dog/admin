@@ -54,7 +54,7 @@ class AdminController extends Controller
      */
     public function getLogin()
     {
-        return view('core::admin.login');
+        return view('admin::admin.login');
     }
 
     /**
