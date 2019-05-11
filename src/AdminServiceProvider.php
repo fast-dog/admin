@@ -33,6 +33,7 @@ class AdminServiceProvider extends LaravelServiceProvider
         $this->handleConfigs();
         $this->handleRoutes();
         $this->handleMigrations();
+        $this->handleViews();
     }
 
     /**
@@ -81,5 +82,21 @@ class AdminServiceProvider extends LaravelServiceProvider
     private function handleRoutes(): void
     {
         $this->loadRoutesFrom(__DIR__ . '/../routes/routes.php');
+    }
+
+    /**
+     * Определение представлении пакета (шаблонов по умолчанию)
+     */
+    private function handleViews(): void
+    {
+        $this->loadViewsFrom(__DIR__ . DIRECTORY_SEPARATOR . '..' .
+            DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR, self::NAME);
+
+        $this->publishes([__DIR__ . DIRECTORY_SEPARATOR . '..' .
+        DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR => base_path('resources/views/vendor/fast_dog/' . self::NAME)]);
+
+        $this->publishes([
+            __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'assets' => public_path('vendor/fast_dog'),
+        ], 'public');
     }
 }
