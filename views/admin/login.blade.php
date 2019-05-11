@@ -1,7 +1,7 @@
 <?php
-
+$theme = '/vendor/fast_dog/';
 ?>
-@extends('core::layouts.admin.default')
+@extends('admin::layouts.admin.default')
 
 @section('title')
     Авторизация
@@ -11,6 +11,19 @@
     login
 @endsection
 
+@section('css')
+    <!-- Bootstrap -->
+    <link href="<?=url($theme . 'css/bootstrap/dist/css/bootstrap.min.css')?>" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="<?=url($theme . 'css/font-awesome/css/font-awesome.min.css')?>" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="<?=url($theme . 'css/nprogress/nprogress.css')?>" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="<?=url($theme . 'css/animate.css/animate.min.css')?>" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="<?= url($theme . 'css/style.css')?>" rel="stylesheet">
+@endsection
 @section('content')
     <div>
         <div class="login_wrapper">

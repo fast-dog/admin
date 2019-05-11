@@ -5,6 +5,9 @@ namespace FastDog\Admin\Models;
 
 use FastDog\Core\Interfaces\ModuleInterface;
 
+use FastDog\Core\Models\DomainManager;
+use FastDog\Core\Models\Module;
+use FastDog\Core\Models\ModuleManager;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 

@@ -4,10 +4,10 @@ namespace FastDog\Admin\Http\Controllers;
 
 
 use FastDog\Admin\Events\AdminMenuEvent;
+use FastDog\Admin\Models\AdminMenu;
 use FastDog\Core\Http\Controllers\Controller;
-use FastDog\Core\Models\AdminMenu;
-use FastDog\Core\Models\Desktop;
 use FastDog\Core\Models\DomainManager;
+use FastDog\User\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -44,7 +44,7 @@ class AdminController extends Controller
      */
     public function getIndex()
     {
-        return view('core::admin.dashboard');
+        return view('admin::admin.dashboard');
     }
 
     /**
@@ -54,7 +54,7 @@ class AdminController extends Controller
      */
     public function getLogin()
     {
-        return view('core::admin.login');
+        return view('admin::admin.login');
     }
 
     /**
@@ -96,7 +96,6 @@ class AdminController extends Controller
             $result['user'] = [
                 'id' => $user->id,
                 'name' => $user->getName(),
-                'role' => $user->getRoleName(),
                 'photo' => $user->getPhoto(),
             ];
         }
