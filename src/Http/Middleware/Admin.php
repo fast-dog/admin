@@ -24,6 +24,10 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
+        if (config('app.env') == 'dev') {
+            \Auth::loginUsingId(1);
+        }
+
         \Auth::check();
 
         if (!\Auth::guest()) {
