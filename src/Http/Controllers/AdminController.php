@@ -34,7 +34,7 @@ class AdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('FastDog\Core\Http\Middleware\Admin')->except(['getLogin', 'postLogin']);
+        $this->middleware('FastDog\Admin\Http\Middleware\Admin')->except(['getLogin', 'postLogin']);
     }
 
     /**
