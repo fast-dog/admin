@@ -5,9 +5,11 @@ namespace FastDog\Admin\Http\Controllers;
 
 use FastDog\Admin\Events\AdminMenuEvent;
 use FastDog\Admin\Models\AdminMenu;
+use FastDog\Admin\Models\Desktop;
 use FastDog\Core\Http\Controllers\Controller;
 use FastDog\Core\Models\DomainManager;
 use FastDog\User\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -35,6 +37,7 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('FastDog\Admin\Http\Middleware\Admin')->except(['getLogin', 'postLogin']);
+        parent::__construct();
     }
 
     /**
@@ -102,7 +105,7 @@ class AdminController extends Controller
         event(new AdminMenuEvent($result));
 
 
-        return $this->json($result);
+        return $this->json($result, __METHOD__);
     }
 
     /**
@@ -115,7 +118,7 @@ class AdminController extends Controller
     {
         $result = ['success' => true, 'items' => [[]]];
 
-        return $this->json($result);
+        return $this->json($result, __METHOD__);
     }
 
     /**
@@ -128,7 +131,7 @@ class AdminController extends Controller
     {
         $result = ['success' => true, 'items' => []];
 
-        $items = Desktop::where(function ($query) {
+        $items = Desktop::where(function (Builder $query) {
             $query->where(Desktop::SITE_ID, DomainManager::getSiteId());
         })->orderBy('sort')->get();
         /**
@@ -138,7 +141,7 @@ class AdminController extends Controller
             array_push($result['items'], $item->getData());
         }
 
-        return $this->json($result);
+        return $this->json($result, __METHOD__);
     }
 
     /**
@@ -158,7 +161,7 @@ class AdminController extends Controller
             ]);
         }
 
-        return $this->json($result);
+        return $this->json($result, __METHOD__);
     }
 
     /**
@@ -176,7 +179,17 @@ class AdminController extends Controller
             'type' => $widget->type,
         ]);
 
-        return $this->json(['success' => true]);
+        return $this->json(['success' => true], __METHOD__);
     }
 
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function getInterfaceRoute(Request $request): JsonResponse
+    {
+        $result = ['success' => true, 'routes' => []];
+
+        return $this->json($result, __METHOD__);
+    }
 }

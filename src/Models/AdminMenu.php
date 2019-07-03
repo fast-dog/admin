@@ -2,14 +2,8 @@
 
 namespace FastDog\Admin\Models;
 
-
-use FastDog\Core\Interfaces\ModuleInterface;
 use FastDog\Core\Models\DomainManager;
-use FastDog\Core\Models\Module;
 use FastDog\Core\Models\ModuleManager;
-
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * Реализация формирования меню в разделе администратора
@@ -27,7 +21,7 @@ class AdminMenu
      *
      * @return array
      */
-    public static function get()
+    public static function get(): array
     {
         /**
          * @var $moduleManager ModuleManager
@@ -52,7 +46,7 @@ class AdminMenu
      *
      * @return bool
      */
-    public static function checkAccess($siteId, $accessList)
+    public static function checkAccess($siteId, $accessList): bool
     {
         // Общий доступ к элементу открыт
         if (in_array("000", $accessList)) {

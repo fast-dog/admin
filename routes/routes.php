@@ -11,6 +11,7 @@ Route::group([
     Route::get('/login', '\FastDog\Admin\Http\Controllers\AdminController@getLogin');
     Route::post('/login', '\FastDog\Admin\Http\Controllers\AdminController@postLogin');
     Route::get('/menu', '\FastDog\Admin\Http\Controllers\AdminController@getMenu');
+    Route::get('/routes', '\FastDog\Admin\Http\Controllers\AdminController@getInterfaceRoute');
     Route::get('/desktop', '\FastDog\Admin\Http\Controllers\AdminController@getDesktop');
     Route::post('/desktop-sort', '\FastDog\Admin\Http\Controllers\AdminController@postDesktopSort');
 
