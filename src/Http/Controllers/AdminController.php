@@ -8,6 +8,7 @@ use FastDog\Admin\Models\AdminMenu;
 use FastDog\Admin\Models\Desktop;
 use FastDog\Core\Http\Controllers\Controller;
 use FastDog\Core\Models\DomainManager;
+use FastDog\Core\Models\ModuleManager;
 use FastDog\User\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -180,16 +181,5 @@ class AdminController extends Controller
         ]);
 
         return $this->json(['success' => true], __METHOD__);
-    }
-
-    /**
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function getInterfaceRoute(Request $request): JsonResponse
-    {
-        $result = ['success' => true, 'routes' => []];
-
-        return $this->json($result, __METHOD__);
     }
 }
